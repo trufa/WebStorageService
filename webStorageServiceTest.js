@@ -48,6 +48,17 @@ define(['squire'], function(Squire) {
             expect(webStorageService.getSessionStorage("test")).to.equal("test");
         });
 
+        it('should get all session storage', function() {
+            webStorageService.setSessionStorage({
+                test: "test",
+                secondTest: "secondTest"
+            });
+            var obj = webStorageService.getSessionStorage();
+            expect(obj).to.exist;
+            expect(obj.test).to.equal("test");
+            expect(obj.secondTest).to.equal("secondTest");
+        });
+
         it('should delete session storage by key', function() {
             webStorageService.setSessionStorage({
                 test: "test",
@@ -89,6 +100,17 @@ define(['squire'], function(Squire) {
             });
             expect(webStorageService.getLocalStorage("test")).to.exist;
             expect(webStorageService.getLocalStorage("test")).to.equal("test");
+        });
+
+        it('should get all local storage', function() {
+            webStorageService.setLocalStorage({
+                test: "test",
+                secondTest: "secondTest"
+            });
+            var obj = webStorageService.getLocalStorage();
+            expect(obj).to.exist;
+            expect(obj.test).to.equal("test");
+            expect(obj.secondTest).to.equal("secondTest");
         });
 
         it('should delete local storage by key', function() {

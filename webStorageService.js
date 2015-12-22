@@ -32,7 +32,10 @@ define([
             return JSON.parse(this._getStorageFunction(type).getItem(this.applicationKey)) || {};
         },
         _getStorage: function(type, storageKey) {
-            return this._getStorageObject(type)[storageKey];
+            if (storageKey) {
+                return this._getStorageObject(type)[storageKey];
+            }
+            return this._getStorageObject(type);
         },
         _setStorage: function(type, obj, replace) {
             var so = obj;
